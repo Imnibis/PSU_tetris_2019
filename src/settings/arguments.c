@@ -10,27 +10,38 @@
 #include <getopt.h>
 #include "tetris.h"
 
-char check_keybindings(int arg, gamedata_t *data)
+vector2i_t set_map_size(char *optarg)
+{
+    char **size = my_strsplit(optarg, ',');
+    vector2i_t map_size;
+
+    map_size.x = my_getnbr(size[1]);
+    map_size.y = my_getnbr(size[0]);
+    return map_size;
+}
+
+char *check_keybindings(int arg, gamedata_t *data)
 {
     switch (arg) {
         case 'l':
-            return data->settings->keys->left = *optarg;
+            return data->settings->keys->left = my_strdup(optarg);
         case 'r':
-            return data->settings->keys->right = *optarg;
+            return data->settings->keys->right = my_strdup(optarg);
         case 't':
-            return data->settings->keys->turn = *optarg;
+            return data->settings->keys->turn = my_strdup(optarg);
         case 'd':
-            return data->settings->keys->drop = *optarg;
+            return data->settings->keys->drop = my_strdup(optarg);
         case 'q':
-            return data->settings->keys->quit = *optarg;
+            return data->settings->keys->quit = my_strdup(optarg);
         case 'p':
-            return data->settings->keys->pause = *optarg;
+            return data->settings->keys->pause = my_strdup(optarg);
+        default:
+            return 0;
     }
 }
 
 void check_arg(int arg, gamedata_t *data)
 {
-    char **size;
     switch (arg) {
         case 'h':
             free_all(data);
@@ -40,9 +51,10 @@ void check_arg(int arg, gamedata_t *data)
             data->level = my_getnbr(optarg);
             break;
         case 's':
-            size = my_strsplit(optarg, ',');
-            data->settings->map_size.x = my_getnbr(size[1]);
-            data->settings->map_size.y = my_getnbr(size[0]);
+            data->settings->map_size = set_map_size(optarg);
+            break;
+        case 'D':
+            data->settings->debug = 1;
             break;
         case '?':
             free_all(data);
@@ -66,7 +78,6 @@ void get_arguments(int argc, char **argv, struct option args[],
 
 gamedata_t *get_settings(int argc, char **argv, gamedata_t *data)
 {
-    vector2i_t bool_settings = {0, 0};
     struct option args[] = {
         {"help", no_argument, NULL, 'h'},
         {"level", required_argument, NULL, 'L'},
@@ -77,12 +88,11 @@ gamedata_t *get_settings(int argc, char **argv, gamedata_t *data)
         {"key-quit", required_argument, NULL, 'q'},
         {"key-pause", required_argument, NULL, 'p'},
         {"map-size", required_argument, NULL, 's'},
-        {"without-next", no_argument, &bool_settings.x, 1},
-        {"debug", no_argument, &bool_settings.y, 1}
+        {"without-next", no_argument, &data->settings->hide_next, 1},
+        {"debug", no_argument, NULL, 'D'},
+        {0, 0, 0, 0}
     };
 
     get_arguments(argc, argv, args, data);
-    data->settings->hide_next = bool_settings.x;
-    data->settings->debug = bool_settings.y;
     return data;
 }

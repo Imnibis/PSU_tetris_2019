@@ -5,7 +5,17 @@
 ** main
 */
 
-int main(int argc, char **argv)
+#include "tetris.h"
+#include <ncurses.h>
+
+int main(int argc, char **argv, char **env)
 {
+    gamedata_t *data;
+
+    setup_terminal(env);
+    data = create_gamedata();
+    data = get_settings(argc, argv, data);
+    if (data->settings->debug)
+        debug_mode(data);
     return 0;
 }

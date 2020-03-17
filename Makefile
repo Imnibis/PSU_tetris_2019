@@ -12,6 +12,12 @@ RM	=	rm -f
 MK	=	make --no-print-directory
 
 SRC		=	src/main.c	\
+			src/display/debug.c	\
+			src/display/usage.c	\
+			src/settings/arguments.c	\
+			src/settings/variable.c	\
+			src/util/memory_management.c	\
+			src/util/setup_term.c	\
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -20,7 +26,7 @@ NAME		=	tetris
 CFLAGS		+=	-W -Wall -Wextra -pedantic
 CFLAGS		+=	-I./include -L./lib
 
-LIBTOOLS	=	-l tools
+LIBTOOLS	=	-l tools -l ncurses
 
 LIBLINKED	=	-l linked
 
@@ -86,8 +92,8 @@ json_fclean:
 
 debug:	linked tools $(OBJ)
 		@echo -e "\033[01m\033[31mBuilding...\033[00m"
-		@$(CC) -g3 -c $(SRC) $(CFLAGS)
-		@echo -e "\033[01m\033[32mCompilation done: ${NAME}\033[00m"
+		@$(CC) -g3 $(SRC) $(CFLAGS)
+		@echo -e "\033[01m\033[32mCompilation done: a.out\033[00m"
 
 clean:	linked_clean tools_clean
 		@echo -e "\033[01m\033[31mCleaning objects...\033[00m"

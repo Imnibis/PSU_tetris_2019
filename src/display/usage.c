@@ -13,7 +13,7 @@ void usage(void)
     my_printf("Usage:  ./tetris [options]\n");
     my_printf("Options:\n");
     my_printf(" --help\t\t\tDisplay this help\n");
-    my_printf(" -L --level={num}\t\tStart Tetris at level num (def: 1)\n");
+    my_printf(" -L --level={num}\tStart Tetris at level num (def: 1)\n");
     my_printf("%s %s", " -l --key-left={K}\tMove the tetrimino LEFT using",
         "the K key (def: left arrow)\n");
     my_printf("%s %s", " -r --key-right={K}\tMove the tetrimino RIGHT using",
@@ -29,5 +29,5 @@ void usage(void)
     my_printf("%s %s", " --map-size={row,col}\tSet the number of rows and",
         "columns of the map (def: 20,10)\n");
     my_printf(" -w --without-next\tHide next tetrimino (def: false)\n");
-    my_printf(" -D --debug\t\t\tDebug mode (def: false)\n");
+    my_printf(" -D --debug\t\tDebug mode (def: false)\n");
 }

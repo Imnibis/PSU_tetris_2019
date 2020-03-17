@@ -47,6 +47,7 @@ SRC 		=	 my_compute_power_rec.c	\
 			 my_char_to_str.c	\
 			 stripslashes.c	\
 			 addslashes.c	\
+			 my_strncmp.c	\
 
 CFLAGS		+=	-W -Wall -Wextra -pedantic
 CFLAGS		+=	-I../../include

@@ -100,5 +100,6 @@ void *my_free_assign(void *to_free, void *value);
 char *my_char_to_str(char c);
 char *stripslashes(char *str);
 char *addslashes(char *str);
+int my_strncmp(char *s1, char *s2, int n);
 
 #endif

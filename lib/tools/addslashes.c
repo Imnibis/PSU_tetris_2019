@@ -5,6 +5,7 @@
 ** addslashes
 */
 
+#include <stdlib.h>
 #include "tools.h"
 
 char *addslashes(char *str)

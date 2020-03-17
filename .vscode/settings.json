@@ -23,6 +23,7 @@
         "my_runner.h": "c",
         "get_next_line.h": "c",
         "stat.h": "c",
-        "dirent.h": "c"
+        "dirent.h": "c",
+        "random": "c"
     }
 }

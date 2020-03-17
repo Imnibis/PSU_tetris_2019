@@ -29,14 +29,23 @@ OBJ 		=	$(SRC:.c=.o)
 
 NAME		=	liblinked.a
 
+$(OBJDIR)%.o:	%.c
+		@$(CC) $(CFLAGS) -o $@ -c $<
+		@if test -s $*.c; then \
+		echo -e "\033[00m\033[36m [LIBLINKED]\033[01m\033[35m Compiling \
+		\033[00m\033[36m$(SRCPATH)$*.c\033[032m  [OK]\033[00m";\
+		else \
+		echo -e "\033[00m\033[36m [LIBLINKED]\033[01m\033[35m Compiling \
+		\033[00m\033[36m$(SRCPATH)$*.c\033[00m\  [Error]"; fi
+
 all: 	$(NAME)
 
 $(NAME):	$(OBJ)
-		ar rc $(NAME) $(OBJ)
-		cp $(NAME) ../
+		@ar rc $(NAME) $(OBJ)
+		@cp $(NAME) ../
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) ../$(NAME)
+	@rm -f $(NAME) ../$(NAME)

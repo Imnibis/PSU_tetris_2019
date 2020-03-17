@@ -29,13 +29,22 @@ typedef struct settings {
 
 typedef struct gamedata {
     settings_t *settings;
-    linked_list_t *tetrominos;
-    int next_tetromino;
+    linked_list_t *tetriminos;
+    int next_tetrimino;
     int high_score;
     int score;
     int lines;
     int level;
     clock_t time;
 } gamedata_t;
+
+typedef struct tetrimino {
+    char *name;
+    vector2i_t size;
+    char **pattern;
+} tetrimino_t;
+
+void usage(void);
+void free_all(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

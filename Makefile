@@ -5,6 +5,12 @@
 ## Builds the project
 ##
 
+CC	=	gcc
+
+RM	=	rm -f
+
+MK	=	make --no-print-directory
+
 SRC		=	src/main.c	\
 
 OBJ		=	$(SRC:.c=.o)
@@ -27,49 +33,68 @@ LIBGAME		=	-l game	\
 				-l csfml-window	\
 				-l csfml-network
 
+$(OBJDIR)%.o:	%.c
+		@$(CC) $(CFLAGS) -o $@ -c $<
+		@if test -s $*.c; then \
+		echo -e "\033[01m\033[35m Compiling \033[00m\
+		\033[36m$(SRCPATH)$*.c\033[032m  [OK]\033[00m";\
+		else \
+		echo -e "\033[01m\033[33m Compiling \033[00m\
+		\033[36m$(SRCPATH)$*.c\033[00m\  [Error]"; fi
+
 all:		linked tools $(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ) $(CFLAGS)
+		@echo -e "\033[01m\033[31mBuilding...\033[00m"
+		@$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+		@echo -e "\033[01m\033[32mCompilation done: ${NAME}\033[00m"
 
 tools:
 		$(eval CFLAGS += $(LIBTOOLS))
-		make -C lib/tools libtools.a
+		@$(MK) -C lib/tools
 game:
 		$(eval CFLAGS += $(LIBGAME))
-		make -C lib/game libgame.a
+		@$(MK) -C lib/game
 linked:
 		$(eval CFLAGS += $(LIBLINKED))
-		make -C lib/linked liblinked.a
+		@$(MK) -C lib/linked
 json:
 		$(eval CFLAGS += $(LIBJSON))
-		make -C lib/json libjson.a
+		@$(MK) -C lib/json
 
 tools_clean:
-		make -C lib/tools clean
+		@echo -e "\033[01m\033[31mCleaning libtools...\033[00m"
+		@$(MK) -C lib/tools clean
 game_clean:
-		make -C lib/game clean
+		@echo -e "\033[01m\033[31mCleaning libgame...\033[00m"
+		@$(MK) -C lib/game clean
 linked_clean:
-		make -C lib/linked clean
+		@echo -e "\033[01m\033[31mCleaning liblinked...\033[00m"
+		@$(MK) -C lib/linked clean
 json_clean:
-		make -C lib/json clean
+		@echo -e "\033[01m\033[31mCleaning libjson...\033[00m"
+		@$(MK) -C lib/json clean
 
 tools_fclean:
-		make -C lib/tools fclean
+		@$(MK) -C lib/tools fclean
 game_fclean:
-		make -C lib/game fclean
+		@$(MK) -C lib/game fclean
 linked_fclean:
-		make -C lib/linked fclean
+		@$(MK) -C lib/linked fclean
 json_fclean:
-		make -C lib/json fclean
+		@$(MK) -C lib/json fclean
 
 debug:	linked tools $(OBJ)
-		gcc -g3 $(SRC) $(CFLAGS)
+		@echo -e "\033[01m\033[31mBuilding...\033[00m"
+		@$(CC) -g3 -c $(SRC) $(CFLAGS)
+		@echo -e "\033[01m\033[32mCompilation done: ${NAME}\033[00m"
 
-clean:	linked_clean tools_clean 
-		rm -f $(OBJ)
+clean:	linked_clean tools_clean
+		@echo -e "\033[01m\033[31mCleaning objects...\033[00m"
+		@$(RM) $(OBJ)
 
-fclean:		clean linked_fclean tools_fclean 
-		rm -f $(NAME)
+fclean:		clean linked_fclean tools_fclean
+		@echo -e "\033[01m\033[31mCleaning binary...\033[00m"
+		@$(RM) $(NAME)
 
 re:		fclean all

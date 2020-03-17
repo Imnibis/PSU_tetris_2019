@@ -6,6 +6,7 @@
 */
 
 #include "tools.h"
+#include <stdlib.h>
 
 char **int_to_str(int nb, char **str)
 {

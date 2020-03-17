@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "tools.h"
 
 void check_slash(char *str, int *had_slash, int *count, int i)
 {

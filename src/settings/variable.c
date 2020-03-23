@@ -45,6 +45,6 @@ gamedata_t *create_gamedata(void)
     data->next_tetrimino = 0;
     data->score = 0;
     data->time = clock();
-    data->tetriminos = 0;
+    data->tetriminos = get_tetriminos();
     return data;
 }

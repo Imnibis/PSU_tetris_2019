@@ -51,5 +51,7 @@ gamedata_t *create_gamedata(void);
 gamedata_t *get_settings(int argc, char **argv, gamedata_t *data);
 void debug_mode(gamedata_t *data);
 void setup_terminal(char **env);
+linked_list_t *get_tetriminos(void);
+linked_list_t *sort_tetriminos(linked_list_t *tetriminos);
 
 #endif /* !TETRIS_H_ */

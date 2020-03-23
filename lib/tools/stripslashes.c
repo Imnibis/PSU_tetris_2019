@@ -27,7 +27,7 @@ char *stripslashes(char *str)
     new_str = malloc(sizeof(char) * (my_strlen(str) - count));
     had_slash = 0;
     count = 0;
-    for(int i = 0; str[i]; i++) {
+    for (int i = 0; str[i]; i++) {
         if (str[i] != '\\' || had_slash) new_str[i - count] = str[i];
         check_slash(str, &had_slash, &count, i);
     }

@@ -101,5 +101,7 @@ char *my_char_to_str(char c);
 char *stripslashes(char *str);
 char *addslashes(char *str);
 int my_strncmp(char *s1, char *s2, int n);
+int my_str_isnum(char const *str);
+int my_str_endswith(char *str, char *with);
 
 #endif

@@ -16,6 +16,8 @@ SRC		=	src/main.c	\
 			src/display/usage.c	\
 			src/settings/arguments.c	\
 			src/settings/variable.c	\
+			src/tetriminos/parse.c	\
+			src/tetriminos/sort.c	\
 			src/util/memory_management.c	\
 			src/util/setup_term.c	\
 

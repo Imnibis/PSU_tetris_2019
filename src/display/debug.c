@@ -55,7 +55,7 @@ void debug_mode(gamedata_t *data)
     my_printf("Next :  %s\n", data->settings->hide_next ? "No" : "Yes");
     my_printf("Level :  %d\n", data->level);
     my_printf("Size :  %d*%d\n", data->settings->map_size.y,
-        data->settings->map_size.x);
+        (data->settings->map_size.x - 1) / 2);
     my_printf("Tetriminos :  %d\n", ll_len(data->tetriminos));
     for (linked_list_t *i = data->tetriminos; i; i = i->next)
         print_tetrimino(i->data);

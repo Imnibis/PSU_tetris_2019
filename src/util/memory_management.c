@@ -13,8 +13,9 @@ void free_tetrimino(void *t)
     tetrimino_t *tetrimino = t;
 
     free(tetrimino->name);
-    for (int i = 0; tetrimino->pattern[i]; i++)
-        free(tetrimino->pattern[i]);
+    if (tetrimino->pattern)
+        for (int i = 0; tetrimino->pattern[i]; i++)
+            free(tetrimino->pattern[i]);
     free(tetrimino);
 }
 
@@ -33,6 +34,7 @@ void free_all(gamedata_t *data)
 {
     free_keys(data->settings->keys);
     free(data->settings);
+    free(data->windows);
     ll_free(data->tetriminos, free_tetrimino);
     free(data);
 }

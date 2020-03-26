@@ -13,7 +13,13 @@ MK	=	make --no-print-directory
 
 SRC		=	src/main.c	\
 			src/display/debug.c	\
+			src/display/color.c	\
+			src/display/title.c	\
+			src/display/score.c	\
 			src/display/usage.c	\
+			src/display/gui.c	\
+			src/display/windows.c	\
+			src/gameplay/start.c	\
 			src/settings/arguments.c	\
 			src/settings/variable.c	\
 			src/tetriminos/parse.c	\

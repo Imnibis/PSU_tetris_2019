@@ -17,5 +17,7 @@ int main(int argc, char **argv, char **env)
     data = get_settings(argc, argv, data);
     if (data->settings->debug)
         debug_mode(data);
+    start_game(data);
+    free_all(data);
     return 0;
 }

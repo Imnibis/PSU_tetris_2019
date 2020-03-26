@@ -30,7 +30,7 @@ settings_t *create_settings(void)
     settings->debug = 0;
     settings->hide_next = 0;
     settings->keys = create_keybindings();
-    settings->map_size = v2i(10, 20);
+    settings->map_size = v2i(21, 20);
     return settings;
 }
 
@@ -44,7 +44,8 @@ gamedata_t *create_gamedata(void)
     data->rows = 0;
     data->next_tetrimino = 0;
     data->score = 0;
-    data->time = clock();
+    data->time = time(NULL);
+    data->windows = malloc(sizeof(windows_t));
     data->tetriminos = get_tetriminos();
     return data;
 }

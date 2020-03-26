@@ -36,29 +36,16 @@ void create_windows(gamedata_t *data)
 
 void start_game(gamedata_t *data)
 {
-    char buff[10];
-
     if (!check_term_size(data)) return;
     initscr();
     curs_set(0);
-    data->time = time(NULL);
+    data->time = clock();
     create_windows(data);
     display_title();
     init_score(data);
     wrefresh(data->windows->std);
-    wrefresh(data->windows->game);
-    wrefresh(data->windows->score);
-    if (!data->settings->hide_next)
-        wrefresh(data->windows->next);
+    refresh_all(data);
     nodelay(stdscr, 1);
-    while (1) {
-        if (getch() != ERR)
-            break;
-        refresh_score(data);
-        wrefresh(data->windows->game);
-        wrefresh(data->windows->score);
-        if (!data->settings->hide_next)
-            wrefresh(data->windows->next);
-    }
+    loop(data);
     endwin();
 }

@@ -7,11 +7,8 @@
 
 int my_strlen(char const *str)
 {
-    int length;
+    int len;
 
-    length = 0;
-    while (str[length]) {
-        length++;
-    }
-    return (length);
+    for (len = 0; str[len]; len++);
+    return len;
 }

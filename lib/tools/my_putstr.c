@@ -6,15 +6,9 @@
 */
 
 #include "tools.h"
+#include <unistd.h>
 
 int my_putstr(char const *str)
 {
-    int i;
-
-    i = 0;
-    while (str[i]) {
-        my_putchar(str[i]);
-        i++;
-    }
-    return (0);
+    return write(1, str, my_strlen(str));
 }

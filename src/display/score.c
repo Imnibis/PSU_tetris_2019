@@ -9,16 +9,6 @@
 #include <time.h>
 #include <ncurses.h>
 
-int get_minutes(gamedata_t *data)
-{
-    return (time(NULL) - data->time) / 60;
-}
-
-int get_seconds(gamedata_t *data)
-{
-    return (time(NULL) - data->time) % 60;
-}
-
 void refresh_score(gamedata_t *data)
 {
     mvwprintw(data->windows->score, 1, 22 -

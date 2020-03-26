@@ -51,7 +51,7 @@ typedef struct gamedata {
     int rows;
     int level;
     windows_t *windows;
-    time_t time;
+    clock_t time;
 } gamedata_t;
 
 void usage(void);
@@ -75,5 +75,10 @@ void display_i(vector2i_t pos, int color);
 void display_s(vector2i_t pos, int color);
 void init_score(gamedata_t *data);
 void refresh_score(gamedata_t *data);
+void refresh_all(gamedata_t *data);
+void loop(gamedata_t *data);
+int get_seconds(gamedata_t *data);
+int get_minutes(gamedata_t *data);
+void check_input(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

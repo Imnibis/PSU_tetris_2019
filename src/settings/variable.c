@@ -44,7 +44,7 @@ gamedata_t *create_gamedata(void)
     data->rows = 0;
     data->next_tetrimino = 0;
     data->score = 0;
-    data->time = time(NULL);
+    data->time = clock();
     data->windows = malloc(sizeof(windows_t));
     data->tetriminos = get_tetriminos();
     return data;

@@ -11,21 +11,29 @@ RM	=	rm -f
 
 MK	=	make --no-print-directory
 
-SRC		=	src/main.c	\
-			src/display/debug.c	\
+SRC		=	src/main.c $(DISPLAY) $(GAMEPLAY) $(SETTINGS) $(TETRIMINOS) $(UTIL)
+
+DISPLAY	=	src/display/debug.c	\
 			src/display/color.c	\
 			src/display/title.c	\
 			src/display/score.c	\
 			src/display/usage.c	\
 			src/display/gui.c	\
 			src/display/windows.c	\
-			src/gameplay/start.c	\
-			src/settings/arguments.c	\
-			src/settings/variable.c	\
-			src/tetriminos/parse.c	\
-			src/tetriminos/sort.c	\
-			src/util/memory_management.c	\
-			src/util/setup_term.c	\
+
+GAMEPLAY	=	src/gameplay/start.c	\
+				src/gameplay/loop.c	\
+				src/gameplay/time.c	\
+				src/gameplay/input.c	\
+
+SETTINGS	=	src/settings/arguments.c	\
+				src/settings/variable.c	\
+
+TETRIMINOS	=	src/tetriminos/parse.c	\
+				src/tetriminos/sort.c	\
+
+UTIL		=	src/util/memory_management.c	\
+				src/util/setup_term.c	\
 
 OBJ		=	$(SRC:.c=.o)
 

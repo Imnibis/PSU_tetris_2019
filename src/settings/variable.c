@@ -30,7 +30,8 @@ settings_t *create_settings(void)
     settings->debug = 0;
     settings->hide_next = 0;
     settings->keys = create_keybindings();
-    settings->map_size = v2i(21, 20);
+    settings->movement_functions = 0;
+    settings->map_size = v2i(10, 20);
     return settings;
 }
 
@@ -39,6 +40,8 @@ gamedata_t *create_gamedata(void)
     gamedata_t *data = malloc(sizeof(gamedata_t));
 
     data->settings = create_settings();
+    data->keys_pressed = 0;
+    data->keys_prev = 0;
     data->high_score = 0;
     data->level = 1;
     data->rows = 0;

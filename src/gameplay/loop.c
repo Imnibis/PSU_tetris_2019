@@ -19,7 +19,11 @@ void loop(gamedata_t *data)
 {
     while (1) {
         check_input(data);
+        display_tetrimino(data, data->current_tetrimino);
         refresh_score(data);
         refresh_all(data);
+        werase(data->windows->game);
+        wborder(data->windows->game, ACS_VLINE, ACS_VLINE, ACS_HLINE,
+            ACS_HLINE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
     }
 }

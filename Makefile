@@ -18,6 +18,7 @@ DISPLAY	=	src/display/debug.c	\
 			src/display/title.c	\
 			src/display/score.c	\
 			src/display/usage.c	\
+			src/display/tetriminos.c	\
 			src/display/gui.c	\
 			src/display/windows.c	\
 
@@ -31,6 +32,7 @@ SETTINGS	=	src/settings/arguments.c	\
 
 TETRIMINOS	=	src/tetriminos/parse.c	\
 				src/tetriminos/sort.c	\
+				src/tetriminos/move.c	\
 
 UTIL		=	src/util/memory_management.c	\
 				src/util/setup_term.c	\

@@ -15,7 +15,7 @@ vector2i_t set_map_size(char *optarg)
     char **size = my_strsplit(optarg, ',');
     vector2i_t map_size;
 
-    map_size.x = my_getnbr(size[1]) * 2 + 1;
+    map_size.x = my_getnbr(size[1]);
     map_size.y = my_getnbr(size[0]);
     return map_size;
 }

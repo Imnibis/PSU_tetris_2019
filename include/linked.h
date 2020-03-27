@@ -50,6 +50,7 @@ void *dict_get(dictionary_t *dict, char *index);
 void dict_destroy_content(dictionary_t *dict);
 void dict_set(dictionary_t *dict, char *index, void *value);
 dictionary_t *dict_swap(dictionary_t *list, int i1, int i2);
+void no_free(void *a);
 void dict_free(dictionary_t *dict, int free_index,
     void (free_content)(void *));
 int dict_len(dictionary_t *dict);

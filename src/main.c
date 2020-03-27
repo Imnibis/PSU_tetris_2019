@@ -15,6 +15,7 @@ int main(int argc, char **argv, char **env)
     setup_terminal(env);
     data = create_gamedata();
     data = get_settings(argc, argv, data);
+    data->settings->movement_functions = setup_input(data);
     if (data->settings->debug)
         debug_mode(data);
     start_game(data);

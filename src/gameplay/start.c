@@ -11,7 +11,7 @@
 int check_term_size(gamedata_t *data)
 {
     return !(LINES < data->settings->map_size.y ||
-        COLS < data->settings->map_size.x);
+        COLS < data->settings->map_size.x + 35);
 }
 
 void display_title(void)
@@ -36,9 +36,18 @@ void create_windows(gamedata_t *data)
 
 void start_game(gamedata_t *data)
 {
-    if (!check_term_size(data)) return;
+    element_t *e;
+    if (!check_term_size(data)) {
+        my_printf(SIZE_WARNING);
+        return;
+    }
+    e = malloc(sizeof(element_t));
+    e->pos = v2i(1, 1);
+    e->tetrimino = ll_get(data->tetriminos, 2);
+    data->current_tetrimino = e;
     initscr();
     curs_set(0);
+    noecho();
     data->time = clock();
     create_windows(data);
     display_title();

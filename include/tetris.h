@@ -11,6 +11,9 @@
 #include "tools.h"
 #include <time.h>
 #include <ncurses.h>
+#define SIZE_WARNING "\nPlease resize the terminal to fit the game window\n"
+
+
 
 typedef struct keybindings {
     char *left;
@@ -23,6 +26,7 @@ typedef struct keybindings {
 
 typedef struct settings {
     keybindings_t *keys;
+    dictionary_t *movement_functions;
     vector2i_t map_size;
     int hide_next;
     int debug;
@@ -35,6 +39,11 @@ typedef struct tetrimino {
     int color;
 } tetrimino_t;
 
+typedef struct element {
+    tetrimino_t *tetrimino;
+    vector2i_t pos;
+} element_t;
+
 typedef struct windows {
     WINDOW *std;
     WINDOW *game;
@@ -44,8 +53,12 @@ typedef struct windows {
 
 typedef struct gamedata {
     settings_t *settings;
+    dictionary_t *keys_prev;
+    dictionary_t *keys_pressed;
     linked_list_t *tetriminos;
-    int next_tetrimino;
+    tetrimino_t *next_tetrimino;
+    element_t *current_tetrimino;
+    linked_list_t *placed_tetriminos;
     int high_score;
     int score;
     int rows;
@@ -80,5 +93,11 @@ void loop(gamedata_t *data);
 int get_seconds(gamedata_t *data);
 int get_minutes(gamedata_t *data);
 void check_input(gamedata_t *data);
+dictionary_t *setup_input(gamedata_t *data);
+void display_tetrimino(gamedata_t *data, element_t *e);
+void move_down(gamedata_t *data);
+void move_up(gamedata_t *data);
+void move_left(gamedata_t *data);
+void move_right(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

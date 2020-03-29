@@ -51,7 +51,7 @@ void check_line(gamedata_t *data)
         pos.x++;
         if (!data->map[pos.y][pos.x]) {
             pos.x = has_gap ? 0 : remove_line(data->map, pos.y);
-            line_count++;
+            line_count += !has_gap;
             has_gap = 0;
             pos.y++;
         }

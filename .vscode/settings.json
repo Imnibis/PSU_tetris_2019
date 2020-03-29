@@ -24,6 +24,7 @@
         "get_next_line.h": "c",
         "stat.h": "c",
         "dirent.h": "c",
-        "random": "c"
+        "random": "c",
+        "tetris.h": "c"
     }
 }

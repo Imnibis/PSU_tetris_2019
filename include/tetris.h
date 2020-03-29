@@ -108,5 +108,8 @@ void drop(gamedata_t *data);
 void free_tetrimino(void *t);
 int check_collision(gamedata_t *data, element_t *tetrimino);
 void display_preview(gamedata_t *data);
+void display_next(gamedata_t *data);
+void display_title(void);
+void check_line(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

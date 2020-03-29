@@ -17,7 +17,6 @@ int check_term_size(gamedata_t *data)
 
 void display_title(void)
 {
-    init_pairs();
     display_t(v2i(1, 3), COLOR_BLUE);
     display_e(v2i(5, 3), COLOR_RED);
     display_t(v2i(9, 3), COLOR_GREEN);
@@ -32,7 +31,23 @@ void create_windows(gamedata_t *data)
     data->windows->game = create_win(v2i(25, 2), data->settings->map_size);
     data->windows->score = create_win(v2i(1, 11), v2i(22, 7));
     data->windows->next = create_win(v2i(data->settings->map_size.x + 27, 2),
-        v2i(7, 3));
+        v2i(2, 2));
+}
+
+void prepare_game(gamedata_t *data)
+{
+    curs_set(0);
+    noecho();
+    srand(time(NULL));
+    data->time = clock();
+    data->last_move = clock();
+    create_windows(data);
+    create_map(data);
+    init_pairs();
+    display_title();
+    init_score(data);
+    wrefresh(data->windows->std);
+    refresh_all(data);
 }
 
 void start_game(gamedata_t *data)
@@ -42,18 +57,8 @@ void start_game(gamedata_t *data)
         return;
     }
     initscr();
-    curs_set(0);
-    noecho();
-    srand(time(NULL));
-    data->time = clock();
-    data->last_move = clock();
-    create_windows(data);
-    create_map(data);
-    display_title();
-    init_score(data);
-    wrefresh(data->windows->std);
-    refresh_all(data);
-    nodelay(stdscr, 1);
+    prepare_game(data);
+    nodelay(data->windows->std, 1);
     loop(data);
     endwin();
 }

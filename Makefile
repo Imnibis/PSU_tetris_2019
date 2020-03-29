@@ -20,12 +20,14 @@ DISPLAY	=	src/display/debug.c	\
 			src/display/usage.c	\
 			src/display/map.c	\
 			src/display/tetriminos.c	\
+			src/display/next.c	\
 			src/display/windows.c	\
 
 GAMEPLAY	=	src/gameplay/start.c	\
 				src/gameplay/loop.c	\
 				src/gameplay/time.c	\
 				src/gameplay/input.c	\
+				src/gameplay/map.c	\
 
 SETTINGS	=	src/settings/arguments.c	\
 				src/settings/variable.c	\

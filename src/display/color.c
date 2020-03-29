@@ -5,6 +5,8 @@
 ** color.c
 */
 
+#include "tetris.h"
+
 void init_pairs(void)
 {
     start_color();

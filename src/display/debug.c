@@ -5,6 +5,7 @@
 ** debug.c
 */
 
+#include "tetris.h"
 #include <unistd.h>
 #include <termios.h>
 

@@ -46,6 +46,8 @@ gamedata_t *create_gamedata(void)
     data->level = 1;
     data->rows = 0;
     data->next_tetrimino = 0;
+    data->current_tetrimino = 0;
+    data->map = 0;
     data->score = 0;
     data->time = clock();
     data->windows = malloc(sizeof(windows_t));

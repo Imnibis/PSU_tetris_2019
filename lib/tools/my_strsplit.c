@@ -16,8 +16,7 @@ char **my_strsplit(char *str, char c)
     char *new_str = my_strdup(str);
 
     for (int i = 0; new_str[i]; i++)
-        if (new_str[i] == c)
-            count++;
+        if (new_str[i] == c) count++;
     result = malloc(sizeof(char *) * (count + 2));
     count = 0;
     for (int i = 0; new_str[i]; i++) {

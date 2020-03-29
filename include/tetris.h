@@ -56,13 +56,14 @@ typedef struct gamedata {
     dictionary_t *keys_prev;
     dictionary_t *keys_pressed;
     linked_list_t *tetriminos;
-    tetrimino_t *next_tetrimino;
+    element_t *next_tetrimino;
     element_t *current_tetrimino;
-    linked_list_t *placed_tetriminos;
+    char **map;
     int high_score;
     int score;
     int rows;
     int level;
+    clock_t last_move;
     windows_t *windows;
     clock_t time;
 } gamedata_t;
@@ -96,8 +97,11 @@ void check_input(gamedata_t *data);
 dictionary_t *setup_input(gamedata_t *data);
 void display_tetrimino(gamedata_t *data, element_t *e);
 void move_down(gamedata_t *data);
-void move_up(gamedata_t *data);
 void move_left(gamedata_t *data);
 void move_right(gamedata_t *data);
+void generate_tetrimino(gamedata_t *data);
+void display_map(gamedata_t *data);
+void create_map(gamedata_t *data);
+void put_in_map(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

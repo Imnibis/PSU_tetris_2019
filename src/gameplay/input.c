@@ -35,24 +35,17 @@ dictionary_t *setup_input(gamedata_t *data)
     dict = dict_add(dict, data->settings->keys->pause, no_op);
     dict = dict_add(dict, data->settings->keys->quit, no_op);
     dict = dict_add(dict, data->settings->keys->right, move_right);
-    dict = dict_add(dict, data->settings->keys->turn, move_up);
+    dict = dict_add(dict, data->settings->keys->turn, no_op);
     data->keys_pressed = create_key_dict(data);
     data->keys_prev = create_key_dict(data);
     return dict;
 }
 
-void check_input(gamedata_t *data)
+void key_check(gamedata_t *data, int extra_keys, char *input, char *str)
 {
-    char *input = my_strdup("");
-    int c = getch();
-    int extra_keys = 0;
-    char *str;
     int *pressed = 0;
+    int c = getch();
 
-    move(0, 0);
-    dict_free(data->keys_prev, 0, free);
-    data->keys_prev = data->keys_pressed;
-    data->keys_pressed = create_key_dict(data);
     while (c != ERR) {
         if (c == 27) extra_keys = 2;
         str = my_char_to_str(my_strlen(input) == 1 && c == '[' ? 'O' : c);
@@ -70,4 +63,17 @@ void check_input(gamedata_t *data)
         c = getch();
         extra_keys -= extra_keys ? 1 : 0;
     }
+}
+
+void check_input(gamedata_t *data)
+{
+    char *input = my_strdup("");
+    int extra_keys = 0;
+    char *str;
+
+    move(0, 0);
+    dict_free(data->keys_prev, 0, free);
+    data->keys_prev = data->keys_pressed;
+    data->keys_pressed = create_key_dict(data);
+    key_check(data, extra_keys, input, str);
 }

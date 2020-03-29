@@ -36,6 +36,11 @@ void free_all(gamedata_t *data)
     dict_free(data->settings->movement_functions, 0, no_free);
     dict_free(data->keys_prev, 0, free);
     dict_free(data->keys_pressed, 0, free);
+    free(data->current_tetrimino);
+    free(data->next_tetrimino);
+    for (int i = 0; data->map && data->map[i]; i++)
+        free(data->map[i]);
+    free(data->map);
     free(data->settings);
     free(data->windows);
     ll_free(data->tetriminos, free_tetrimino);

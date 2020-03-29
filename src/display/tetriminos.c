@@ -18,7 +18,7 @@ void display_tetrimino_line(gamedata_t *data, element_t *e, int i)
 
 void display_tetrimino(gamedata_t *data, element_t *e)
 {
-    for (int i = 0; e->tetrimino->pattern[i]; i++) {
+    for (int i = 0; e && e->tetrimino->pattern[i]; i++) {
         display_tetrimino_line(data, e, i);
     }
 }

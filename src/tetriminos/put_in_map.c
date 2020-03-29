@@ -17,7 +17,7 @@ void put_in_map(gamedata_t *data)
         pos.x++;
         if (!t->pattern[pos.y][pos.x] ||
             !data->map[pos.y + t_pos.y - 1][pos.x + t_pos.x - 1]) {
-            pos.x = 0;
+            pos.x = -1;
             pos.y++;
             continue;
         }

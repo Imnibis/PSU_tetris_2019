@@ -29,7 +29,9 @@ void loop(gamedata_t *data)
             move_down(data);
         check_input(data);
         display_map(data);
-        display_tetrimino(data, data->current_tetrimino);
+        display_preview(data);
+        display_tetrimino(data, data->windows->game, data->current_tetrimino);
+        
         refresh_score(data);
         refresh_all(data);
     }

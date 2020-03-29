@@ -30,7 +30,7 @@ dictionary_t *setup_input(gamedata_t *data)
 {
     dictionary_t *dict = 0;
 
-    dict = dict_add(dict, data->settings->keys->drop, move_down);
+    dict = dict_add(dict, data->settings->keys->drop, drop);
     dict = dict_add(dict, data->settings->keys->left, move_left);
     dict = dict_add(dict, data->settings->keys->pause, no_op);
     dict = dict_add(dict, data->settings->keys->quit, no_op);

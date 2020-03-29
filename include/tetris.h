@@ -11,6 +11,7 @@
 #include "tools.h"
 #include <time.h>
 #include <ncurses.h>
+#define PREVIEW 8
 #define SIZE_WARNING "\nPlease resize the terminal to fit the game window\n"
 
 
@@ -95,7 +96,7 @@ int get_seconds(gamedata_t *data);
 int get_minutes(gamedata_t *data);
 void check_input(gamedata_t *data);
 dictionary_t *setup_input(gamedata_t *data);
-void display_tetrimino(gamedata_t *data, element_t *e);
+void display_tetrimino(gamedata_t *data, WINDOW *win, element_t *e);
 void move_down(gamedata_t *data);
 void move_left(gamedata_t *data);
 void move_right(gamedata_t *data);
@@ -103,5 +104,9 @@ void generate_tetrimino(gamedata_t *data);
 void display_map(gamedata_t *data);
 void create_map(gamedata_t *data);
 void put_in_map(gamedata_t *data);
+void drop(gamedata_t *data);
+void free_tetrimino(void *t);
+int check_collision(gamedata_t *data, element_t *tetrimino);
+void display_preview(gamedata_t *data);
 
 #endif /* !TETRIS_H_ */

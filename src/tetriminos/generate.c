@@ -25,8 +25,8 @@ void generate_tetrimino(gamedata_t *data)
     element_t *e = malloc(sizeof(element_t));
 
     e->tetrimino = pick_tetrimino(data);
-    e->pos = v2i(data->settings->map_size.x / 2 + e->tetrimino->size.x / 2 + 1,
-        1);
+    e->pos = v2i(data->settings->map_size.x / 2 -
+        e->tetrimino->size.x / 2 + 1, 1);
     data->current_tetrimino = data->next_tetrimino;
     data->next_tetrimino = e;
 }

@@ -1,12 +1,10 @@
 /*
-** EPITECH PROJECT, 2020
+** EPITECH PROJECT, 2019
 ** PSU_tetris_2019
 ** File description:
-** debug
+** debug.c
 */
 
-#include "tetris.h"
-#include <ncurses.h>
 #include <unistd.h>
 #include <termios.h>
 

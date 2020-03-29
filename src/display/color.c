@@ -1,12 +1,9 @@
 /*
-** EPITECH PROJECT, 2020
+** EPITECH PROJECT, 2019
 ** PSU_tetris_2019
 ** File description:
-** color
+** color.c
 */
-
-#include "tetris.h"
-#include <ncurses.h>
 
 void init_pairs(void)
 {

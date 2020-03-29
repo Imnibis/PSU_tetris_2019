@@ -1,12 +1,9 @@
 /*
-** EPITECH PROJECT, 2020
+** EPITECH PROJECT, 2019
 ** PSU_tetris_2019
 ** File description:
-** main
+** main.c
 */
-
-#include "tetris.h"
-#include <ncurses.h>
 
 int main(int argc, char **argv, char **env)
 {

@@ -5,6 +5,8 @@
 ** main.c
 */
 
+#include "tetris.h"
+
 int main(int argc, char **argv, char **env)
 {
     gamedata_t *data;

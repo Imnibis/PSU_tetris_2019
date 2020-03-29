@@ -31,7 +31,6 @@ void loop(gamedata_t *data)
         display_map(data);
         display_preview(data);
         display_tetrimino(data, data->windows->game, data->current_tetrimino);
-        
         refresh_score(data);
         refresh_all(data);
     }

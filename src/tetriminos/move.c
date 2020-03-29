@@ -22,7 +22,7 @@ int check_collision(gamedata_t *data)
             continue;
         }
         if (t->pattern[pos.y][pos.x] == '*' &&
-            data->map[pos.y + t_pos.y][pos.x + t_pos.x - 1] < 9)
+            data->map[pos.y + t_pos.y][pos.x + t_pos.x - 2] < 9)
             return 0;
     }
     if (t->pattern[pos.y] && !data->map[pos.y + t_pos.y])
